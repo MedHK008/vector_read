@@ -47,7 +47,7 @@ void chapterSeparetor() {
 }
 
 int main(int, char**) {
-    ofstream csvFile("analysis.csv");
+    ofstream csvFile("../analysis.csv");
     if (!csvFile.is_open()) {
         cerr << "Failed to open analysis.csv" << endl;
         return 1;
