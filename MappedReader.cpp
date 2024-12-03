@@ -1,6 +1,8 @@
 #include "MappedReader.h"
 
-MappedReader::MappedReader(string file) : filename(file), count(0) {}
+#include <utility>
+
+MappedReader::MappedReader(string file) : filename(std::move(file)), count(0) {}
 
 void MappedReader::readMap() {
     ifstream file(filename);
@@ -15,65 +17,65 @@ void MappedReader::readMap() {
     file.close();
 }
 
-void MappedReader::printMap() {
-    for (const auto &pair : wordMap) {
-        cout << pair.first << ": " << pair.second << endl;
+void MappedReader::printMap() const {
+    for (const auto &[fst, snd] : wordMap) {
+        cout << fst << ": " << snd << endl;
     }
 }
 
-int MappedReader::getCount() {
+int MappedReader::getCount() const {
     return count;
 }
 
-int MappedReader::findWord(string word) {
+int MappedReader::findWord(const string& word) {
     return wordMap[word];
 }
 
 void MappedReader::clean() {
     map<string, int> cleanedMap;
-    for (auto &pair : wordMap) {
+    for (auto &[fst, snd] : wordMap) {
         string cleanedWord;
-        for (char c : pair.first) {
+        for (const char c : fst) {
             if (isalnum(c)) {
                 cleanedWord += c;
             }
         }
-        cleanedMap[cleanedWord] += pair.second;
+        cleanedMap[cleanedWord] += snd;
     }
     wordMap = cleanedMap;
     map<string, int> cleanedMap2;
-    for (const auto &pair : wordMap) {
-        if (pair.first.size() > 4) {
-            cleanedMap2[pair.first] = pair.second;
+    for (const auto &[fst, snd] : wordMap) {
+        if (fst.size() > 4) {
+            cleanedMap2[fst] = snd;
         }
     }
     wordMap = cleanedMap2;
 }
 
-void MappedReader::findTop10Words() {
+void MappedReader::findTop10Words() const {
     vector<pair<string, int>> sortedWords;
-    for (auto pair : wordMap)
-        sortedWords.push_back(pair);
+    for (const auto& pair : wordMap)
+        sortedWords.emplace_back(pair);
     cmp(sortedWords);
     for (int i = 0; i < 10 && i < sortedWords.size(); i++)
         cout << sortedWords[i].first << " " << sortedWords[i].second << endl;
 }
 
 void MappedReader::cmp(std::vector<std::pair<std::string, int>> &sortedWords) {
-    sort(sortedWords.begin(), sortedWords.end(), [](pair<string, int> a, pair<string, int> b) {
+    sort(sortedWords.begin(), sortedWords.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
         return a.second > b.second;
     });
 }
 
-void MappedReader::saveMapToFile(string outputFilename) {
+void MappedReader::saveMapToFile(const string& outputFilename) const {
     ofstream outFile(outputFilename);
-    for (const auto &pair : wordMap) {
-        outFile << pair.first << " " << pair.second << endl;
+    for (const auto &[fst, snd] : wordMap) {
+        outFile << fst << " " << snd << endl;
     }
     outFile.close();
 }
 
-void MappedReader::loadMapFromFile(string inputFilename) {
+void MappedReader::loadMapFromFile(const string& inputFilename) {
     ifstream inFile(inputFilename);
     string word;
     int count;
@@ -84,7 +86,7 @@ void MappedReader::loadMapFromFile(string inputFilename) {
 }
 
 
-vector<string> MappedReader::getWordsWithMinOccurrences(int minOccurrences) {
+vector<string> MappedReader::getWordsWithMinOccurrences(int minOccurrences) const {
     vector<string> result;
     for (const auto &pair : wordMap) {
         if (pair.second >= minOccurrences) {
@@ -94,7 +96,7 @@ vector<string> MappedReader::getWordsWithMinOccurrences(int minOccurrences) {
     return result;
 }
 
-vector<string> MappedReader::getWordsWithMaxOccurrences(int maxOccurrences) {
+vector<string> MappedReader::getWordsWithMaxOccurrences(int maxOccurrences) const {
     vector<string> result;
     for (const auto &pair : wordMap) {
         if (pair.second <= maxOccurrences) {
@@ -104,11 +106,11 @@ vector<string> MappedReader::getWordsWithMaxOccurrences(int maxOccurrences) {
     return result;
 }
 
-vector<string> MappedReader::getWordsStartingWith(char letter) {
+vector<string> MappedReader::getWordsStartingWith(char letter) const {
     vector<string> result;
-    for (const auto &pair : wordMap) {
-        if (pair.first[0] == letter) {
-            result.push_back(pair.first);
+    for (const auto &[fst, snd] : wordMap) {
+        if (fst[0] == letter) {
+            result.push_back(fst);
         }
     }
     return result;
@@ -116,7 +118,7 @@ vector<string> MappedReader::getWordsStartingWith(char letter) {
 
 void MappedReader::readSubjects()
 {
-    ifstream file("subject.txt");
+    ifstream file("../subject.txt");
     string word;
     vector<string> subjects;
     while (getline(file, word)) {
@@ -140,8 +142,7 @@ void MappedReader::readSubjects()
     }
 }
 
-void MappedReader::printSubjects()
-{
+void MappedReader::printSubjects() const {
     for (const auto &pair : subjectsMap) {
         cout << pair.first << ": ";
         for (const auto &word : pair.second)
@@ -163,31 +164,30 @@ void MappedReader::countSubjectsOccurrences()
     }
 }
 
-void MappedReader::printSubjectsOccurrences()
-{
-    for(const auto &pair : subjectsOccurrences)
-        cout << pair.first << " mentionned : " << pair.second << endl;
+void MappedReader::printSubjectsOccurrences() const {
+    for(const auto &[fst, snd] : subjectsOccurrences)
+        cout << fst << " mentioned : " << snd << endl;
 }
 
-void MappedReader::findMaxOccurrences()
-{
+void MappedReader::findMaxOccurrences() const {
     int max = 0;
     string maxSubject;
-    for(const auto &pair : subjectsOccurrences)
+    for(const auto &[fst, snd] : subjectsOccurrences)
     {
-        if(pair.second > max)
+        if(snd > max)
         {
-            max = pair.second;
-            maxSubject = pair.first;
+            max = snd;
+            maxSubject = fst;
         }
     }
-    cout << "The subject mentionned the most is " << maxSubject << " with " << max << " mentions." << endl;
+    cout << "The subject mentioned the most is " << maxSubject << " with " << max << " mentions." << endl;
 }
 
 string MappedReader::getAnalysisData() {
     vector<pair<string, int>> sortedWords;
-    for (auto pair : wordMap)
-        sortedWords.push_back(pair);
+    sortedWords.reserve(wordMap.size());
+    for (const auto& pair : wordMap)
+            sortedWords.emplace_back(pair);
     cmp(sortedWords);
 
     string topWord = sortedWords.empty() ? "" : sortedWords[0].first;
@@ -195,10 +195,10 @@ string MappedReader::getAnalysisData() {
 
     int max = 0;
     string maxSubject;
-    for (const auto &pair : subjectsOccurrences) {
-        if (pair.second > max) {
-            max = pair.second;
-            maxSubject = pair.first;
+    for (const auto &[fst, snd] : subjectsOccurrences) {
+        if (snd > max) {
+            max = snd;
+            maxSubject = fst;
         }
     }
 
@@ -218,7 +218,7 @@ void MappedReader::analyseChapter() {
     readMap();
     clean();
     findTop10Words();
-    saveMapToFile("output.txt");
+    saveMapToFile("../output.txt");
     readSubjects();
     countSubjectsOccurrences();
     printSubjectsOccurrences();

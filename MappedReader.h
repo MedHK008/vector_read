@@ -14,24 +14,25 @@ class MappedReader {
     public:
         MappedReader(string);
         void readMap();
-        void printMap();
-        int getCount();
-        int findWord(string);
+        void printMap() const;
+        int getCount() const;
+        int findWord(const string&);
         void clean();
-        void findTop10Words();
-        void cmp(std::vector<std::pair<std::string, int>> &sortedWords);
-        void saveMapToFile(string);
-        void loadMapFromFile(string);
-        vector<string> getWordsWithMinOccurrences(int);
-        vector<string> getWordsWithMaxOccurrences(int);
-        vector<string> getWordsStartingWith(char);
+        void findTop10Words() const;
+
+        static void cmp(std::vector<std::pair<std::string, int>> &sortedWords);
+        void saveMapToFile(const string &outputFilename) const;
+        void loadMapFromFile(const string &inputFilename);
+        vector<string> getWordsWithMinOccurrences(int) const;
+        vector<string> getWordsWithMaxOccurrences(int) const;
+        vector<string> getWordsStartingWith(char) const;
 
         void readSubjects();
-        void printSubjects();
+        void printSubjects() const;
         void countSubjectsOccurrences();
 
-        void printSubjectsOccurrences();
-        void findMaxOccurrences();
+        void printSubjectsOccurrences() const;
+        void findMaxOccurrences() const;
 
         void analyseChapter();
         string getAnalysisData();
