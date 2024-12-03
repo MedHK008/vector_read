@@ -1,0 +1,2 @@
+Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
+chapters/chapter26.txt,cassian,25,cassian;nesta;mouth;again;about;didnt;table;through;around;against,political_science,2

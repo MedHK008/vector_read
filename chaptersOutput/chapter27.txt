@@ -1,0 +1,2 @@
+Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
+chapters/chapter27.txt,nesta,21,nesta;cassian;emerie;other;smile;night;morning;about;before;training,sociology,2

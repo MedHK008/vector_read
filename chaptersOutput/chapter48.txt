@@ -1,0 +1,2 @@
+Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
+chapters/chapter48.txt,cassian,11,cassian;nesta;didnt;river;herself;going;could;nothing;still;weight,chemistry,1
