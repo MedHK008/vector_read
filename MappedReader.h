@@ -4,6 +4,9 @@
 #include <map>
 #include <fstream>
 #include <algorithm>
+#include <filesystem>
+#include <sstream>
+#include <cctype>
 
 using namespace std;
 
@@ -23,8 +26,19 @@ class MappedReader {
         vector<string> getWordsWithMaxOccurrences(int);
         vector<string> getWordsStartingWith(char);
 
+        void readSubjects();
+        void printSubjects();
+        void countSubjectsOccurrences();
+
+        void printSubjectsOccurrences();
+        void findMaxOccurrences();
+
+        void analyseChapter();
+        string getAnalysisData();
     private:
         string filename;
         map<string, int> wordMap;
+        map<string, vector<string>> subjectsMap;
+        map<string, int> subjectsOccurrences;
         int count;
 };

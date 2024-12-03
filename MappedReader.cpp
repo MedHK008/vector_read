@@ -6,6 +6,9 @@ void MappedReader::readMap() {
     ifstream file(filename);
     string word;
     while (file >> word) {
+        for (char &c : word) {
+            c = tolower(c);
+        }
         wordMap[word]++;
         count++;
     }
@@ -109,4 +112,115 @@ vector<string> MappedReader::getWordsStartingWith(char letter) {
         }
     }
     return result;
+}
+
+void MappedReader::readSubjects()
+{
+    ifstream file("subject.txt");
+    string word;
+    vector<string> subjects;
+    while (getline(file, word)) {
+        istringstream iss(word);
+        string subject;
+        iss >> subject;
+        vector<string> associatedWords;
+        string associatedWord;
+        for(char &c : subject)
+        {
+            c = tolower(c);
+        }
+        while (iss >> associatedWord) {
+            for(char &c : associatedWord)
+            {
+                c = tolower(c);
+            }
+            associatedWords.push_back(associatedWord);
+        }
+        subjectsMap[subject] = associatedWords;
+    }
+}
+
+void MappedReader::printSubjects()
+{
+    for (const auto &pair : subjectsMap) {
+        cout << pair.first << ": ";
+        for (const auto &word : pair.second)
+            cout << word << " ";
+        cout << endl;
+    }
+}
+
+void MappedReader::countSubjectsOccurrences()
+{
+    int subjectCount = 0;
+    for(const auto &subject : subjectsMap)
+    {
+        for(const auto &pair : wordMap)
+            if(find(subject.second.begin(), subject.second.end(), pair.first) != subject.second.end())
+                subjectCount++;
+        subjectsOccurrences[subject.first] = subjectCount;
+        subjectCount = 0;
+    }
+}
+
+void MappedReader::printSubjectsOccurrences()
+{
+    for(const auto &pair : subjectsOccurrences)
+        cout << pair.first << " mentionned : " << pair.second << endl;
+}
+
+void MappedReader::findMaxOccurrences()
+{
+    int max = 0;
+    string maxSubject;
+    for(const auto &pair : subjectsOccurrences)
+    {
+        if(pair.second > max)
+        {
+            max = pair.second;
+            maxSubject = pair.first;
+        }
+    }
+    cout << "The subject mentionned the most is " << maxSubject << " with " << max << " mentions." << endl;
+}
+
+string MappedReader::getAnalysisData() {
+    vector<pair<string, int>> sortedWords;
+    for (auto pair : wordMap)
+        sortedWords.push_back(pair);
+    cmp(sortedWords);
+
+    string topWord = sortedWords.empty() ? "" : sortedWords[0].first;
+    int topWordCount = sortedWords.empty() ? 0 : sortedWords[0].second;
+
+    int max = 0;
+    string maxSubject;
+    for (const auto &pair : subjectsOccurrences) {
+        if (pair.second > max) {
+            max = pair.second;
+            maxSubject = pair.first;
+        }
+    }
+
+    stringstream ss;
+    ss << filename << "," << topWord << "," << topWordCount << ",";
+    for (int i = 0; i < 10 && i < sortedWords.size(); i++) {
+        ss << sortedWords[i].first;
+        if (i < 9 && i < sortedWords.size() - 1) {
+            ss << ";";
+        }
+    }
+    ss << "," << maxSubject << "," << max;
+    return ss.str();
+}
+
+void MappedReader::analyseChapter() {
+    readMap();
+    clean();
+    findTop10Words();
+    saveMapToFile("output.txt");
+    readSubjects();
+    countSubjectsOccurrences();
+    printSubjectsOccurrences();
+    findMaxOccurrences();
 }

@@ -1,56 +1,68 @@
-#include "Reader.h"
 #include "MappedReader.h"
-#include <chrono>
 
-int main(int, char**){
-    
-    auto start = std::chrono::high_resolution_clock::now();
-    // Reader reader("words.txt");
-    // reader.read();
+using namespace std;
+namespace fs = std::filesystem;
 
-    // cout << "Number of words: " << reader.getCount() << endl;
-
-    // reader.findWord("the");
-
-    // cout << "Number of occurrences of 'the': " << reader.findOccurrence("the") << endl;
-
-    MappedReader mappedReader("words.txt");
-    mappedReader.readMap();
-    mappedReader.clean();
-    cout << "Number of words: " << mappedReader.getCount() << endl;
-    cout << "Number of occurrences of 'the': " << mappedReader.findWord("the") << endl;
-
-
-    mappedReader.findTop10Words();
-    auto stop = std::chrono::high_resolution_clock::now();
-
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-
-    cout << "Time taken by function: " << duration.count() << " milliseconds" << endl;
-
-    mappedReader.saveMapToFile("word_map.txt");
-    mappedReader.loadMapFromFile("word_map.txt");
-
-    vector<string> minOccurrencesWords = mappedReader.getWordsWithMinOccurrences(5);
-    cout << "Words with at least 5 occurrences: ";
-    for (const auto &word : minOccurrencesWords) {
-        cout << word << " ";
+bool isNumber(const string& str) {
+    for (char const &c : str) {
+        if (!isdigit(c)) return false;
     }
-    cout << endl;
+    return true;
+}
 
-    vector<string> maxOccurrencesWords = mappedReader.getWordsWithMaxOccurrences(2);
-    cout << "Words with at most 2 occurrences: ";
-    for (const auto &word : maxOccurrencesWords) {
-        cout << word << " ";
+void chapterSeparetor() {
+    ifstream file("words.txt");
+    if (!file.is_open()) {
+        cerr << "Failed to open words.txt" << endl;
+        return;
     }
-    cout << endl;
 
-    vector<string> wordsStartingWithT = mappedReader.getWordsStartingWith('t');
-    cout << "Words starting with 't': ";
-    for (const auto &word : wordsStartingWithT) {
-        cout << word << " ";
+    fs::create_directory("chapters");
+
+    string line;
+    int chapter = 0;
+    ofstream chapterFile;
+    while (getline(file, line)) {
+        if (isNumber(line)) {
+            if (chapterFile.is_open()) {
+                chapterFile.close();
+            }
+            chapter++;
+            chapterFile.open("chapters/chapter" + to_string(chapter) + ".txt");
+            if (!chapterFile.is_open()) {
+                cerr << "Failed to create chapter file" << endl;
+                return;
+            }
+        }
+        if (chapterFile.is_open()) {
+            chapterFile << line << endl;
+        }
     }
-    cout << endl;
 
+    if (chapterFile.is_open()) {
+        chapterFile.close();
+    }
+
+    file.close();
+}
+
+int main(int, char**) {
+    ofstream csvFile("analysis.csv");
+    if (!csvFile.is_open()) {
+        cerr << "Failed to open analysis.csv" << endl;
+        return 1;
+    }
+
+    csvFile << "Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject\n";
+
+    for (int i = 1; i <= 80; ++i) {
+        string chapterFile = "chapters/chapter" + to_string(i) + ".txt";
+        MappedReader reader(chapterFile);
+        reader.analyseChapter();
+        csvFile << reader.getAnalysisData() << "\n";
+    }
+
+    csvFile.close();
     return 0;
 }
+
