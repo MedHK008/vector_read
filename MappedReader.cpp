@@ -2,7 +2,7 @@
 
 #include <utility>
 
-MappedReader::MappedReader(string file) : filename(std::move(file)), count(0) {}
+MappedReader::MappedReader(string file,string PatternFile) : filename(std::move(file)), count(0) {}
 
 void MappedReader::readMap() {
     ifstream file(filename);
@@ -223,4 +223,92 @@ void MappedReader::analyseChapter() {
     countSubjectsOccurrences();
     printSubjectsOccurrences();
     findMaxOccurrences();
+}
+
+void MappedReader::readWordsFromFile() {
+    ifstream file(filename);
+    string word;
+    while (file >> word) {
+        for (char &c : word) {
+            c = tolower(c);
+        }
+        words.push_back(word);
+    }
+}
+
+void MappedReader::readPatternsFromFile() {
+    ifstream file(subStringFile);
+    string line;
+    while (getline(file, line)) {
+        istringstream iss(line);
+        string word;
+        vector<string> pattern;
+        while (iss >> word) {
+            for (char &c : word) {
+                c = tolower(c);
+            }
+            pattern.push_back(word);
+        }
+        patterns.push_back(pattern);
+    }
+}
+
+vector<int> MappedReader::computeKMPTable(const vector<string>& pattern) {
+    vector<int> table(pattern.size(), 0);
+    int j = 0;
+    for (int i = 1; i < pattern.size(); i++) {
+        if (pattern[i] == pattern[j]) {
+            j++;
+            table[i] = j;
+        } else {
+            if (j != 0) {
+                j = table[j - 1];
+                i--;
+            } else {
+                table[i] = 0;
+            }
+        }
+    }
+    return table;
+}
+
+int MappedReader::KMPSearch(const vector<string>& text, const vector<string>& pattern) {
+    vector<int> table = computeKMPTable(pattern);
+    int i = 0, j = 0;
+    int count = 0;
+    while (i < text.size()) {
+        if (pattern[j] == text[i]) {
+            i++;
+            j++;
+        }
+        if (j == pattern.size()) {
+            count++;
+            j = table[j - 1];
+        } else if (i < text.size() && pattern[j] != text[i]) {
+            if (j != 0) {
+                j = table[j - 1];
+            } else {
+                i++;
+            }
+        }
+    }
+    return count;
+}
+
+void MappedReader::countPatternsOccurrences() {
+    map<vector<string>, int> patternOccurrences;
+    for (const auto& pattern : patterns) {
+        int count = KMPSearch(words, pattern);
+        patternOccurrences[pattern] = count;
+    }
+}
+
+void MappedReader::printPatternsOccurences() const {
+    for (const auto& [fst, snd] : PatternOccurrences) {
+        cout << "Pattern: ";
+        for (const auto& word : fst) {
+            cout << word << " ";
+        }
+        cout << "occurs " << snd << " times." << endl;
+    }
 }

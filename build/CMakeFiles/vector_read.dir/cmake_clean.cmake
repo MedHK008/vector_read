@@ -2,8 +2,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/vector_read.dir/link.d"
   "CMakeFiles/vector_read.dir/MappedReader.cpp.o"
   "CMakeFiles/vector_read.dir/MappedReader.cpp.o.d"
-  "CMakeFiles/vector_read.dir/Reader.cpp.o"
-  "CMakeFiles/vector_read.dir/Reader.cpp.o.d"
   "CMakeFiles/vector_read.dir/main.cpp.o"
   "CMakeFiles/vector_read.dir/main.cpp.o.d"
   "vector_read"

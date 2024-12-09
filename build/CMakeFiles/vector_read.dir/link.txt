@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/vector_read.dir/link.d CMakeFiles/vector_read.dir/main.cpp.o CMakeFiles/vector_read.dir/Reader.cpp.o CMakeFiles/vector_read.dir/MappedReader.cpp.o -o vector_read
+/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/vector_read.dir/link.d CMakeFiles/vector_read.dir/main.cpp.o CMakeFiles/vector_read.dir/MappedReader.cpp.o -o vector_read

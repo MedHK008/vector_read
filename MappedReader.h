@@ -12,7 +12,7 @@ using namespace std;
 
 class MappedReader {
     public:
-        MappedReader(string);
+        MappedReader(string, string);
         void readMap();
         void printMap() const;
         int getCount() const;
@@ -36,10 +36,22 @@ class MappedReader {
 
         void analyseChapter();
         string getAnalysisData();
+
+        void readWordsFromFile();
+        void readPatternsFromFile();
+        vector<int> computeKMPTable(const vector<string>&);
+        int KMPSearch(const vector<string>&, const vector<string>&);
+        void countPatternsOccurrences();
+        void printPatternsOccurences() const;
+
     private:
         string filename;
+        string subStringFile;
         map<string, int> wordMap;
         map<string, vector<string>> subjectsMap;
         map<string, int> subjectsOccurrences;
+        vector<string> words;
+        vector<vector<string>> patterns;
+        map<vector<string>, int> PatternOccurrences;
         int count;
 };

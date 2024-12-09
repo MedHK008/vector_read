@@ -153,30 +153,6 @@ MappedReader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vector_read.dir/build.make CMakeFiles/vector_read.dir/MappedReader.cpp.s
 .PHONY : MappedReader.cpp.s
 
-Reader.o: Reader.cpp.o
-.PHONY : Reader.o
-
-# target to build an object file
-Reader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vector_read.dir/build.make CMakeFiles/vector_read.dir/Reader.cpp.o
-.PHONY : Reader.cpp.o
-
-Reader.i: Reader.cpp.i
-.PHONY : Reader.i
-
-# target to preprocess a source file
-Reader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vector_read.dir/build.make CMakeFiles/vector_read.dir/Reader.cpp.i
-.PHONY : Reader.cpp.i
-
-Reader.s: Reader.cpp.s
-.PHONY : Reader.s
-
-# target to generate assembly for a file
-Reader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vector_read.dir/build.make CMakeFiles/vector_read.dir/Reader.cpp.s
-.PHONY : Reader.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -213,9 +189,6 @@ help:
 	@echo "... MappedReader.o"
 	@echo "... MappedReader.i"
 	@echo "... MappedReader.s"
-	@echo "... Reader.o"
-	@echo "... Reader.i"
-	@echo "... Reader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

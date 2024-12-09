@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/medhk/vector_read/MappedReader.cpp" "CMakeFiles/vector_read.dir/MappedReader.cpp.o" "gcc" "CMakeFiles/vector_read.dir/MappedReader.cpp.o.d"
-  "/home/medhk/vector_read/Reader.cpp" "CMakeFiles/vector_read.dir/Reader.cpp.o" "gcc" "CMakeFiles/vector_read.dir/Reader.cpp.o.d"
   "/home/medhk/vector_read/main.cpp" "CMakeFiles/vector_read.dir/main.cpp.o" "gcc" "CMakeFiles/vector_read.dir/main.cpp.o.d"
   "" "vector_read" "gcc" "CMakeFiles/vector_read.dir/link.d"
   )

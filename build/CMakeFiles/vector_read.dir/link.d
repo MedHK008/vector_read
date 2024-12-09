@@ -3,7 +3,6 @@ vector_read: \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o \
   CMakeFiles/vector_read.dir/main.cpp.o \
-  CMakeFiles/vector_read.dir/Reader.cpp.o \
   CMakeFiles/vector_read.dir/MappedReader.cpp.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so \
@@ -41,8 +40,6 @@ vector_read: \
 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o:
 
 CMakeFiles/vector_read.dir/main.cpp.o:
-
-CMakeFiles/vector_read.dir/Reader.cpp.o:
 
 CMakeFiles/vector_read.dir/MappedReader.cpp.o:
 
