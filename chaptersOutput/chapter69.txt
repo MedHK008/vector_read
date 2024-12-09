@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter69.txt,nesta,42,nesta;emerie;cassian;could;their;before;azriel;again;would;through,geography,2

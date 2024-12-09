@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter35.txt,kelpie,9,kelpie;nesta;mouth;against;power;hands;water;darkness;breath;fingers,biology,1

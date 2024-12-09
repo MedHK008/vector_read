@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter78.txt,nesta,23,nesta;cassian;emerie;would;again;their;little;there;later;feyre,sociology,2

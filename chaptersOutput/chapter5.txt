@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter5.txt,nesta,33,nesta;cassian;before;those;nothing;beyond;cassians;devlon;training;going,economics,2

@@ -1,3 +1,0 @@
-C:/Users/HADES/CLionProjects/vector_read/cmake-build-debug/CMakeFiles/vector_read.dir
-C:/Users/HADES/CLionProjects/vector_read/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/HADES/CLionProjects/vector_read/cmake-build-debug/CMakeFiles/rebuild_cache.dir

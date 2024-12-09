@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter36.txt,water,15,water;nesta;their;cassian;against;kelpie;around;could;black;beneath,biology,1

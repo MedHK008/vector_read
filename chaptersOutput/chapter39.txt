@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter39.txt,nesta,29,nesta;breathing;cassian;before;around;through;breaths;didnt;breath;hadnt,technology,2

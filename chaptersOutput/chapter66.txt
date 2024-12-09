@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter66.txt,nesta,50,nesta;emerie;didnt;water;around;clothes;night;would;emeries;before,political_science,4

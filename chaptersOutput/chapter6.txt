@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter6.txt,nesta,28,nesta;cassian;clotho;there;library;could;hands;through;their;morrigan,biology,1

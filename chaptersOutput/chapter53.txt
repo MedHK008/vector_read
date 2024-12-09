@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter53.txt,nesta,37,nesta;cassian;through;could;their;didnt;wards;there;stone;cassians,music,4

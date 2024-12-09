@@ -36,7 +36,7 @@ void MappedReader::clean() {
     for (auto &[fst, snd] : wordMap) {
         string cleanedWord;
         for (const char c : fst) {
-            if (isalnum(c)) {
+            if (isalpha(c)) {
                 cleanedWord += c;
             }
         }
@@ -85,7 +85,6 @@ void MappedReader::loadMapFromFile(const string& inputFilename) {
     inFile.close();
 }
 
-
 vector<string> MappedReader::getWordsWithMinOccurrences(int minOccurrences) const {
     vector<string> result;
     for (const auto &pair : wordMap) {
@@ -118,7 +117,7 @@ vector<string> MappedReader::getWordsStartingWith(char letter) const {
 
 void MappedReader::readSubjects()
 {
-    ifstream file("../subject.txt");
+    ifstream file("../files/subject.txt");
     string word;
     vector<string> subjects;
     while (getline(file, word)) {
@@ -158,7 +157,7 @@ void MappedReader::countSubjectsOccurrences()
     {
         for(const auto &pair : wordMap)
             if(find(subject.second.begin(), subject.second.end(), pair.first) != subject.second.end())
-                subjectCount++;
+                subjectCount+= pair.second;
         subjectsOccurrences[subject.first] = subjectCount;
         subjectCount = 0;
     }
@@ -218,7 +217,8 @@ void MappedReader::analyseChapter() {
     readMap();
     clean();
     findTop10Words();
-    saveMapToFile("../output.txt");
+    string outputFilename = "../files/"+filename+"output.txt";
+    saveMapToFile(outputFilename);
     readSubjects();
     countSubjectsOccurrences();
     printSubjectsOccurrences();

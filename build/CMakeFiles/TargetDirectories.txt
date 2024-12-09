@@ -1,0 +1,3 @@
+/home/medhk/vector_read/build/CMakeFiles/vector_read.dir
+/home/medhk/vector_read/build/CMakeFiles/edit_cache.dir
+/home/medhk/vector_read/build/CMakeFiles/rebuild_cache.dir

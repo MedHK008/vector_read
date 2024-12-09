@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter23.txt,cassian,43,cassian;nesta;azriel;would;could;training;toward;again;cassians;theyd,history,2

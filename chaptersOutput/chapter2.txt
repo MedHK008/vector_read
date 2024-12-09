@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter2.txt,nesta,46,nesta;feyre;didnt;cassian;amren;elain;about;would;nestas;there,history,2

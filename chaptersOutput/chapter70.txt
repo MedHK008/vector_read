@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter70.txt,nesta,4,nesta;friends;first;sword;might;shield;these;warriors;would;ataraxia,philosophy,1

@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter3.txt,cassian,43,cassian;nesta;feyre;before;could;their;would;there;those;house,music,3

@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter73.txt,nesta,9,nesta;bellius;cassian;would;going;could;screaming;throat;through;mountain,biology,1

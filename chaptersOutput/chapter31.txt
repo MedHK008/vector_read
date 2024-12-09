@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter31.txt,nesta,33,nesta;cassian;feyre;didnt;nestas;where;amren;about;mouth;herself,history,2

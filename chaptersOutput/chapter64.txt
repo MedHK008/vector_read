@@ -1,2 +1,0 @@
-Chapter File Name,Top Word,Occurrences of Top Word,Top 10 Words,Top Subject Mentioned,Occurrences in Top Subject
-chapters/chapter64.txt,nesta,24,nesta;cassian;feyre;blood;could;didnt;amren;azriel;bodies;breath,history,3
